@@ -1,9 +1,23 @@
-function App() {
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import Users from "./user/pages/Users";
+import NewPlace from "./places/pages/NewPlace";
+import MainNavigation from "./shared/components/Navigation/MainNavigation";
+
+const App = () => {
   return (
-    <>
-      <h1>Let's Start!</h1>
-    </>
+    <BrowserRouter>
+      <MainNavigation />
+      <main>
+        <Routes>
+          <Route path="/" element={<Users />} />
+          <Route path="/places/new" element={<NewPlace />} />
+
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
